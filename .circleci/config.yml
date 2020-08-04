@@ -8,6 +8,7 @@ jobs:
       - run:
           name: Building the project
           command: |
+            echo "ls"
             npm install
             npm build
             
