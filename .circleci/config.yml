@@ -3,12 +3,11 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.12.0-browsers
-    working_directory: ~/shopping-cart-app
     steps:
       - run:
           name: Building the project
           command: |
-            echo "ls"
+            echo @working_directory
             npm install
             npm build
             
