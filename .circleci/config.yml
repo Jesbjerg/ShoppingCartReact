@@ -2,14 +2,19 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: node:10
+      - image: circleci/node:8.12.0-browsers
     steps:
       - run:
           name: Building the project
           command: |
             npm install
-            yarn build
+            npm build
+            
       - run:
           name: Testing the project
           command: |
-            echo "No testing"
+            npm test --single-run
+
+
+
+
