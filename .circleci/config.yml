@@ -4,12 +4,12 @@ jobs:
     docker:
       - image: node:10
     steps:
-      - build:
+      - run:
           name: Building the project
           command: |
             npm install
             npm build
-      - test:
+      - run:
           name: Testing the project
           command: |
             echo "No testing"
