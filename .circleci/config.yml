@@ -8,7 +8,7 @@ jobs:
           name: Building the project
           command: |
             npm install
-            npm build
+            yarn build
       - run:
           name: Testing the project
           command: |
