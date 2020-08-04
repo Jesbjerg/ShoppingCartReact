@@ -28,12 +28,12 @@ jobs:
             --delete
             --acl public-read \
             --cache-control "max-age=86400"
-          aws-access-key-id: 'AKIAQMSLJFULUIAUGSVR'
-          aws-region: 'eu-central-1'
-          aws-secret-access-key: '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'
-          from: 'build/'
+          aws-access-key-id: AKIAQMSLJFULUIAUGSVR
+          aws-region: eu-central-1
+          aws-secret-access-key: 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
+          from: build/
           overwrite: true
-          to: 's3://shopping-cart-react-app/'
+          to: s3://shopping-cart-react-app/
 
 workflows:
   version: 2
