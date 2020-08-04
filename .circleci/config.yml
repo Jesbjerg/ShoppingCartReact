@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.12.0-browsers
+    working_directory: ~/
     steps:
       - run:
           name: Building the project
