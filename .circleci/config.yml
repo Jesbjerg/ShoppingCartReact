@@ -42,4 +42,4 @@ workflows:
             context: aws-context
             filters:
               branches:
-                only: developer
+                only: master
