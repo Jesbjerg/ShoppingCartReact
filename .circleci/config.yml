@@ -3,13 +3,13 @@ jobs:
     parameters:
        access-key:
          type: env_var_name
-         default: $AWSAccessKey
+         default: AWSAccessKey
        secret-key:
          type: env_var_name
-         default: $AWSSecurityKey
+         default: AWSSecurityKey
        region-name:
          type: env_var_name
-         default: $AWSRegion
+         default: AWSRegion
     docker:
       - image: 'cimg/python:3.6'
     steps:
