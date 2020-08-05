@@ -1,31 +1,52 @@
+version: 2.1
+orbs:
+  aws-cli: circleci/aws-cli@0.1.18
 jobs:
-  build:
-    parameters:
-       access-key:
-         type: env_var_name
-         default: AWSAccessKey
-       secret-key:
-         type: env_var_name
-         default: AWSSecurityKey
-       region-name:
-         type: env_var_name
-         default: AWSRegion
+  build_project:
+    working_directory: ~/repo
     docker:
-      - image: 'cimg/python:3.6'
+      - image: node:10.15.3
     steps:
       - checkout
-      - aws-s3/sync:
-          arguments: |
-            --delete
-            --acl public-read \
-            --cache-control "max-age=86400"
-          aws-access-key-id: << parameters.access-key >>
-          aws-region: << parameters.region-name >>
-          aws-secret-access-key: << parameters.secret-key >>
-          from: build/
-          overwrite: true
-          to: 's3://shopping-cart-react-app'
-orbs:
-  aws-s3: circleci/aws-s3@1.0.16
-version: 2.1
+      - run: 
+          name: Installing dependencies
+          command: yarn
+      - run: 
+          name: Building project
+          command: yarn build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
 
+  deploy_project:
+    executor: aws-cli/default
+    steps:
+      - attach_workspace:
+          at: .
+      - aws-cli/setup:
+          profile-name: default
+      - run:
+          name: Upload file to S3
+          command: aws s3 sync ./build/ s3://shopping-cart-react-app --delete
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build_project:
+          filters:
+              branches:
+                ignore: /.*/
+              tags:
+                only: /.*/
+
+      - deploy_project:
+          requires:
+            - build_project
+          context: aws-context
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/
