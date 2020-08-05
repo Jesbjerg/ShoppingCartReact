@@ -35,11 +35,7 @@ workflows:
   build:
     jobs:
       - build_project:
-          filters:
-              branches:
-                ignore: /.*/
-              tags:
-                only: /.*/
+          
 
       - deploy_project:
           requires:
