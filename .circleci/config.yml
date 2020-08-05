@@ -42,10 +42,4 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - test
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+
