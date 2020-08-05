@@ -1,5 +1,12 @@
 jobs:
   build:
+    parameters:
+       access-key:
+         type: env_var_name
+         default: AWSAccessKey
+       secret-key:
+         type: env_var_name
+         default: AWSSecurityKey
     docker:
       - image: 'cimg/python:3.6'
     steps:
@@ -9,9 +16,9 @@ jobs:
             --delete
             --acl public-read \
             --cache-control "max-age=86400"
-          aws-access-key-id: $AWSAccessKey
+          aws-access-key-id: ${<< parameters.access-key >>}
           aws-region: $AWSRegion
-          aws-secret-access-key: $AWSSecurityKey
+          aws-secret-access-key: ${<< parameters.secret-key >>}
           from: build/
           overwrite: true
           to: 's3://shopping-cart-react-app'
