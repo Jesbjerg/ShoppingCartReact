@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import "../styling/variables.less";
+//import styles from "../styling/variables.less";
 import { AppBar } from "@material-ui/core";
 type HeaderProps = {
   title?: string;
