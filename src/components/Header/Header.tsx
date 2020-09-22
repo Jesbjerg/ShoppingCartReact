@@ -1,16 +1,17 @@
 import React, { FunctionComponent } from "react";
-//import styles from "../styling/variables.less";
+import "./Header.css";
 import { AppBar } from "@material-ui/core";
+
 type HeaderProps = {
   title?: string;
   onClick?: React.MouseEventHandler;
-  color?: "inherit" | "primary" | "secondary";
+  color: "primary";
   position?: "sticky";
 };
 
 const CustomHeader: FunctionComponent<HeaderProps> = ({ title, color }) => (
   <AppBar color={color} position="sticky">
-    <h1>{title}</h1>
+    <h1 className="Header">{title}</h1>
   </AppBar>
 );
 

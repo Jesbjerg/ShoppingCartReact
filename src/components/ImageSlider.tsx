@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from "react";
+import styles from "./imageSlider.module.css";
 
 export const ImageSlider: FunctionComponent = () => {
   const [imageState] = useState<string[]>([
@@ -21,7 +22,7 @@ export const ImageSlider: FunctionComponent = () => {
     }
     return indexState - 1;
   }
-  console.log(indexState);
+
   return (
     <div>
       <button onClick={() => setIndexState(decrementIndex)}>Previous</button>
@@ -33,7 +34,12 @@ export const ImageSlider: FunctionComponent = () => {
           height: 100,
         }}
       />
-      <button onClick={() => setIndexState(incrementIndex)}>Next</button>
+      <button
+        className={styles.slider}
+        onClick={() => setIndexState(incrementIndex)}
+      >
+        Next
+      </button>
       <div></div>
     </div>
   );

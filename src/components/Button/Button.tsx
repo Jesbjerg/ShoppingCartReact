@@ -13,7 +13,7 @@ const CustomButton: FunctionComponent<ButtonProps> = ({
   color,
   variant,
 }) => (
-  <Button onClick={onClick} color={color} variant={variant}>
+  <Button onClick={() => null} color={color} variant={variant}>
     {title}
   </Button>
 );
