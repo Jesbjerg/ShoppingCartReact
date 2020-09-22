@@ -3,5 +3,5 @@ import * as React from "react";
 import Header from "../components/Header/Header";
 
 storiesOf("Header", module).add("Shopping Cart", () => (
-  <Header title="Accept" color="primary"></Header>
+  <Header title="Shopping Cart" color="primary"></Header>
 ));
