@@ -3,7 +3,7 @@ import "./Header.css";
 import { AppBar } from "@material-ui/core";
 
 type HeaderProps = {
-  title?: string;
+  title: string;
   onClick?: React.MouseEventHandler;
   color: "primary";
   position?: "sticky";

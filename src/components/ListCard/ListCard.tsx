@@ -1,5 +1,4 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import React, { FunctionComponent } from "react";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
@@ -7,44 +6,49 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import DropDown from "../DropDown/DropDown";
+import "./ListCard.css";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-});
+type ListCardProps = {
+  title: string;
+  description: string;
+};
 
-export default function ImgMediaCard() {
-  const classes = useStyles();
-
+export const ListCard: FunctionComponent<ListCardProps> = ({
+  title,
+  description,
+}) => {
   return (
-    <Card className={classes.root}>
+    <Card className="card">
       <CardActionArea>
         <CardMedia
           component="img"
-          alt="Contemplative Reptile"
+          alt="Banana"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          image={require("../../testImages/test-banana.jpg")}
+          title="Banana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {description}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-          Share
+      <CardActions className="multicard-actions">
+        <Button size="large" color="primary" variant="contained">
+          Add
+          <ShoppingCartIcon
+            style={{ color: "#fff" }}
+            color="disabled"
+            fontSize="small"
+          ></ShoppingCartIcon>
         </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
+        <DropDown></DropDown>
       </CardActions>
     </Card>
   );
-}
+};

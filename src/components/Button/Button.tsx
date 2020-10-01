@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { Button } from "@material-ui/core";
+
 type ButtonProps = {
   title?: string;
   onClick?: React.MouseEventHandler;
@@ -13,7 +14,12 @@ const CustomButton: FunctionComponent<ButtonProps> = ({
   color,
   variant,
 }) => (
-  <Button onClick={() => null} color={color} variant={variant}>
+  <Button
+    className="Button"
+    onClick={() => null}
+    color={color}
+    variant={variant}
+  >
     {title}
   </Button>
 );
