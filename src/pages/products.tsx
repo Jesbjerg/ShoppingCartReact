@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Product } from "../models/product";
 import axios from "axios";
 import { ListCard } from "../components/ListCard/ListCard";
-import Loader from "../components/Loader/Loader";
-import { Input } from "@material-ui/core";
+import { CircularProgress, Input } from "@material-ui/core";
 
 export function Products() {
   const [products, setProducts] = useState<Product[]>();
@@ -51,7 +50,12 @@ export function Products() {
             </ul>
           </div>
         ) : (
-          <Loader></Loader>
+          <div style={{ textAlign: "center" }}>
+            <CircularProgress
+              disableShrink
+              style={{ marginTop: "1rem" }}
+            ></CircularProgress>
+          </div>
         )}
       </div>
     </div>
